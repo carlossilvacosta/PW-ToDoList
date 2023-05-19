@@ -5,15 +5,15 @@ const btAdicionar = document.getElementById("btAdicionar");
 
 const taskUrl = "https://parseapi.back4app.com/classes/lista";
 const headers = {
-    "X-Parse-Application-Id": "5XvUo93NelN1i745o3PzJZLAnWeV2nrdq8Btqcjc",
-    "X-Parse-REST-API-Key": "LbdScYICdEHMiBmvAGVq4ylcoY18TWBQeRkDiXVu"
+  "X-Parse-Application-Id": "5XvUo93NelN1i745o3PzJZLAnWeV2nrdq8Btqcjc",
+  "X-Parse-REST-API-Key": "LbdScYICdEHMiBmvAGVq4ylcoY18TWBQeRkDiXVu"
 };
 
 const renderizaLista = (lista, tarefas) => {
   lista.innerHTML = "";
   tarefas.forEach((tarefa) => {
     const itemText = document.createTextNode(
-      `${tarefa.description} (${tarefa.done}) `
+      `${tarefa.description} `
     );
     const buttonDelete = document.createElement("button");
     buttonDelete.innerHTML = "Remover";
@@ -25,6 +25,9 @@ const renderizaLista = (lista, tarefas) => {
     const listItem = document.createElement("li");
     listItem.appendChild(checkboxDone)
     listItem.appendChild(itemText);
+    if (checkboxDone.checked === true) {
+      listItem.classList.add("risco")
+    }
     listItem.appendChild(buttonDelete);
     lista.appendChild(listItem);
   });
